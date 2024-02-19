@@ -80,8 +80,68 @@ const createUsernames = function (accounts) {
     account.username = account.owner // Juan Sánchez
       .toLowerCase() // juan sánchez
       .split(' ') // ['juan', 'sánchez']
-      .map((name) => name[0])
+      .map((name) => name[0]) // ['j', 's']
       .join('') // js (lo contrario que split)
   })
 }
 createUsernames(accounts)
+
+// TAREAS:
+// Mostrar el texto de bienvenida
+// cambiar opacidad
+// Quitar los movimientos que hay en el HTML
+// poner los nuevos movimientos en el HTML
+
+// Hacer lo mismo desde REACT
+
+// SUBIR APP EN REACT
+// 1. Se compila: npm run build
+// 2. Subir la carpeta build a certweb // gh-pages ojo la carpeta no está en el raíz
+
+btnLogin.addEventListener('click', function (e) {
+  // 1. no llamar al servidor!!
+  e.preventDefault()
+  // 2. Buscar cuenta de usuario y ver si existe
+  const currentAccount = accounts.find(
+    (account) => account.username === inputLoginUsername.value
+  ) // 1. recibir un objeto cuenta {pin: 1111, ...}
+  // 2. recibir undefined si no existe la cuenta
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log('LOGIN CORRECTO')
+    // 3. Si existe, mostrar la app y el mensaje de bienvenida
+    containerApp.style.opacity = 100
+    labelWelcome.textContent = `Bienvenido, ${
+      currentAccount.owner.split(' ')[0]
+    }`
+    updateUI(currentAccount)
+  } else {
+    console.log('LOGIN INCORRECTO')
+    // Mostramos Usuario o contraseña incorrectos
+  }
+
+  // 4. Limpiar los campos
+  inputLoginUsername.value = inputLoginPin.value = ''
+  inputLoginPin.blur() // quitar el foco
+})
+
+function updateUI(account) {
+  displayMovements(account.movements)
+  // displayBalance(account)
+  // displaySummary(account)
+}
+
+function displayMovements(movements) {
+  containerMovements.innerHTML = ''
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal'
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+        <div class="movements__value">${mov}€</div>
+      </div>
+    `
+    containerMovements.insertAdjacentHTML('afterbegin', html)
+  })
+}

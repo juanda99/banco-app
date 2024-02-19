@@ -33,7 +33,18 @@ const account4 = {
   pin: 4444,
 }
 
+<<<<<<< HEAD
 const accounts = [account1, account2, account3, account4]
+=======
+const account4 = {
+  owner: 'Juan Sánchez',
+  movements: [523, 900, 1200, 20, -90],
+  interestRate: 1,
+  pin: 5555,
+};
+
+const accounts = [account1, account2, account3, account4];
+>>>>>>> 072fd8e9d1c89d56b45b392cfbd2d69769f26c1c
 
 // Elements
 const labelWelcome = document.querySelector('.welcome')
@@ -53,6 +64,7 @@ const btnLoan = document.querySelector('.form__btn--loan')
 const btnClose = document.querySelector('.form__btn--close')
 const btnSort = document.querySelector('.btn--sort')
 
+<<<<<<< HEAD
 const inputLoginUsername = document.querySelector('.login__input--user')
 const inputLoginPin = document.querySelector('.login__input--pin')
 const inputTransferTo = document.querySelector('.form__input--to')
@@ -154,3 +166,29 @@ const displaySumary = function (movements) {
 const sumOut = movements 
 .filter (mov) => mov <0)
 .reduce (acc,mov)
+=======
+const inputLoginUsername = document.querySelector('.login__input--user');
+const inputLoginPin = document.querySelector('.login__input--pin');
+const inputTransferTo = document.querySelector('.form__input--to');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputCloseUsername = document.querySelector('.form__input--user');
+const inputClosePin = document.querySelector('.form__input--pin');
+
+//crear  funcion CreateUsername que reciba array de cuentas
+//y devuelva un nuevo array con los nombres de usuarios de cada cuenta
+//en minusculas y sin espacios
+//por ej Juan Sanches -> js
+
+const  createUsernames = functions (accounts) {
+  accounts.forEach(function (account)){
+    sccount.username = account.owner //Juan Sánchez
+    .toLowerCase() //juan sánchez
+    .split('') //['juan sánchez']
+    .map(name=>[0]) //['juan' , 'sánchez']
+    .join('') //js (lo contrario que split)
+    return {...account, username: username}
+  }  
+}
+createUsernames(aacounts)
+>>>>>>> 072fd8e9d1c89d56b45b392cfbd2d69769f26c1c

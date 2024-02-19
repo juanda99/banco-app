@@ -1,64 +1,22 @@
 import './App.css'
+import Welcome from './Welcome/Welcome'
+import Login from './Login/Login'
+import Summary from './Summary/Summary'
+import Movements from './Movements/Movements'
+import Balance from './Balance/Balance'
 
 function App() {
   return (
     <>
       <nav>
-        <p className="welcome">Log in to get started</p>
-        <img src="logo.png" alt="Logo" className="logo" />
-        <form className="login">
-          <input
-            type="text"
-            placeholder="user"
-            className="login__input login__input--user"
-          />
-          <input
-            type="text"
-            placeholder="PIN"
-            maxlength="4"
-            className="login__input login__input--pin"
-          />
-          <button className="login__btn">&rarr;</button>
-        </form>
+        <Welcome />
+        <Login />
       </nav>
 
       <main className="app">
-        <div className="balance">
-          <div>
-            <p className="balance__label">Current balance</p>
-            <p className="balance__date">
-              As of <span className="date">05/03/2037</span>
-            </p>
-          </div>
-          <p className="balance__value">0000€</p>
-        </div>
-
-        <div className="movements">
-          <div className="movements__row">
-            <div className="movements__type movements__type--deposit">
-              2 deposit
-            </div>
-            <div className="movements__date">3 days ago</div>
-            <div className="movements__value">4 000€</div>
-          </div>
-          <div className="movements__row">
-            <div className="movements__type movements__type--withdrawal">
-              1 withdrawal
-            </div>
-            <div className="movements__date">24/01/2037</div>
-            <div className="movements__value">-378€</div>
-          </div>
-        </div>
-
-        <div className="summary">
-          <p className="summary__label">In</p>
-          <p className="summary__value summary__value--in">0000€</p>
-          <p className="summary__label">Out</p>
-          <p className="summary__value summary__value--out">0000€</p>
-          <p className="summary__label">Interest</p>
-          <p className="summary__value summary__value--interest">0000€</p>
-          <button className="btn--sort">&downarrow; SORT</button>
-        </div>
+        <Balance />
+        <Movements />
+        <Summary />
 
         <div className="operation operation--transfer">
           <h2>Transfer money</h2>

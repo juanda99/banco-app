@@ -1,23 +1,33 @@
+import { useState } from 'react'
+import accounts from './cuentas'
 import './App.css'
 import Welcome from './Welcome/Welcome'
 import Login from './Login/Login'
-import Sumary from './Sumary/Sumary'
-import Balance from './Balance/Balance'
+import Summary from './Summary/Summary'
 import Movements from './Movements/Movements'
-
+import Balance from './Balance/Balance'
 function App() {
+  const [account, setAccount] = useState(accounts[0])
+  const { movements } = account
+  //TAREAS
+  // 1. Hacer el componente Welcome
+  //  Recibe una propiedad que sea el nombre de usuario
+  // si esta vacío que muestre "Log in to get started"
+  //si está lleno muestra "Bienvenido, {nombre de usuario}"
+  // 2. Hacer el componente Login -> usar useRef como hicimos para hacer el login
+  //3. Hacer los movimientos
+  // recibe una propiedad que es el array de movimientos
+  // muestra una lista de movimientos que son un componente
   return (
     <>
       <nav>
         <Welcome />
         <Login />
       </nav>
-
       <main className="app">
-        <Balance />
+        <Balance movements={movements} />
         <Movements />
-        <Sumary />
-
+        <Summary movements={movements} />
         <div className="operation operation--transfer">
           <h2>Transfer money</h2>
           <form className="form form--transfer">
@@ -28,7 +38,6 @@ function App() {
             <label className="form__label">Amount</label>
           </form>
         </div>
-
         <div className="operation operation--loan">
           <h2>Request loan</h2>
           <form className="form form--loan">
@@ -40,7 +49,6 @@ function App() {
             <label className="form__label form__label--loan">Amount</label>
           </form>
         </div>
-
         <div className="operation operation--close">
           <h2>Close account</h2>
           <form className="form form--close">
@@ -55,7 +63,6 @@ function App() {
             <label className="form__label">Confirm PIN</label>
           </form>
         </div>
-
         <p className="logout-timer">
           You will be logged out in <span className="timer">05:00</span>
         </p>
@@ -63,5 +70,4 @@ function App() {
     </>
   )
 }
-
 export default App

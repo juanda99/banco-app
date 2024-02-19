@@ -1,6 +1,8 @@
 import './Balance.css'
 
 function Balance() {
+  const { movements } = props
+  const balance = movements.reduce((acc, mov) => acc + mov, 0)
   return (
     <div className="balance">
       <div>
@@ -9,7 +11,7 @@ function Balance() {
           As of <span className="date">05/03/2037</span>
         </p>
       </div>
-      <p className="balance__value">0000€</p>
+      <p className="balance__value">{balance}</p>
     </div>
   )
 }
